@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+      <div class="col-md-8 mx-auto">
+          <div class="card">
+              <div class="card-header ">
+                  <h3>Product specifications</h3>
+              </div>
+              <div class="card-body">
+                  <form class="form" [formGroup]="productForm" (ngSubmit)="onSubmit()">
+                      <div class="form-group">
+                          <label>Name</label>
+                          <input type="text" class="form-control" formControlName="name">
+                          <span class="text-danger"
+                              *ngIf="(productFormControl.name.touched || submitted) && productFormControl.name.errors?.required">
+                              Name is required
+                          </span>
+                      </div>
+                      <div class="form-group">
+                          <label>Price</label>
+                          <input type="text" class="form-control" formControlName="price">
+                          <span class="text-danger"
+                              *ngIf="(productFormControl.price.touched || submitted) && productFormControl.price.errors?.required">
+                              price is required
+                          </span>
+                      </div>
+                      <div class="form-group">
+                          <label>Description</label>
+                          <input type="text" class="form-control" formControlName="description">
+                      </div>
+                      <div class="form-group">
+                        <label>Image</label>
+                        <input type="text" class="form-control" formControlName="image">
+                    </div>
+                      <div class="form-group">
+                          <button type="submit" class="btn btn-primary">Add Product</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

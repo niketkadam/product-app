@@ -1,0 +1,16 @@
+<div class="container">
+  <button class="btn btn-primary" (click)="addProduct()">
+    Add Products
+  </button>
+
+  <div *ngIf="products">
+    <div class="card" *ngFor="let product of products">
+      <i class="fas fa-camera" (click)="remove(product)"></i>
+      <img src="img_avatar.png" alt="Avatar" style="width:100%">
+      <div class="container">
+        <p>{{product.name}}</p>
+        <p>{{product.price}}</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]='["/products"]'>Products</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]='["/add-products"]'>Add Products</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
