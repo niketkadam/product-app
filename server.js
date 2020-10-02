@@ -11,6 +11,8 @@ app.use('/api', api);
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname , 'dist/shopping-cart/index.html'));
 });
+app.use(bodyParser.json({limit: "50mb"}));
+app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
 app.disable('etag');
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");

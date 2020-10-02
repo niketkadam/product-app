@@ -9,24 +9,30 @@ import { ProductService } from '../product.service';
 })
 export class CardsComponent implements OnInit {
   products = [];
+  loading = false;
   constructor(private router: Router, private productSvc: ProductService) { }
 
   ngOnInit(): void {
+    this.loading = true;
     this.productSvc.getProducts().subscribe(res => {
-      console.log(res);
       this.products = res;
-    })
+      this.loading = false;
+    });
   }
 
   addProduct(): void {
     this.router.navigate(['/add-products']);
   }
+
   remove(product): void {
     this.productSvc.removeProduct(product._id).subscribe(res => {
-      console.log(res);
-      const updatedProduct = this.products;
-      this.products = updatedProduct.filter(prod => prod._id !== product._id);
+      this.products = this.products.filter(prod => prod._id !== product._id);
     });
+    event.stopPropagation();
+  }
+
+  routeTo(product): void {
+    this.router.navigate(['/product', product._id]);
   }
 
 }

@@ -11,7 +11,8 @@ import { ProductService } from '../product.service';
 export class AddProductComponent implements OnInit {
   productForm: FormGroup;
   submitted = false;
-
+  fileToUpload: any;
+  imageUrl: any;
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -30,6 +31,26 @@ export class AddProductComponent implements OnInit {
 
   get productFormControl() {
     return this.productForm.controls;
+  }
+
+  handleFileInput(event) {
+    // this.fileToUpload = file.item(0);
+    // let reader = new FileReader();
+    // reader.onload = (event: any) => {
+    //   this.imageUrl = event.target.result;
+    // }
+    // reader.readAsDataURL(this.fileToUpload);
+    let reader = new FileReader(); // HTML5 FileReader API
+    let file = event.target.files[0];
+    if (event.target.files && event.target.files[0]) {
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.imageUrl = reader.result;
+        this.productForm.patchValue({
+          image: reader.result
+        });
+      }
+    }
   }
 
   onSubmit() {

@@ -2,11 +2,13 @@
   <button class="btn btn-primary" (click)="addProduct()">
     Add Products
   </button>
-
-  <div *ngIf="products">
-    <div class="card" *ngFor="let product of products">
-      <i class="fas fa-camera" (click)="remove(product)"></i>
-      <img src="img_avatar.png" alt="Avatar" style="width:100%">
+<div *ngIf="loading">
+  <i class="fa fa-spinner" aria-hidden="true"></i>
+</div>
+  <div *ngIf="products && !loading" class="row">
+    <div class="card col-md-3" *ngFor="let product of products"  (click)="routeTo(product,false)">
+      <i class="fa fa-remove " (click)="remove(product)"></i>
+      <img width="100%" *ngIf="product.image" [src]="product.image" class="image">
       <div class="container">
         <p>{{product.name}}</p>
         <p>{{product.price}}</p>

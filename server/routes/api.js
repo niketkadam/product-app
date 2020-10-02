@@ -1,12 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const ObjectId = Schema.ObjectId;
 const Product = require('../models/product');
+
 router.get('/', (req, res) => {
   res.send('api works');
 });
+
 const db = 'mongodb://niket:Niket856@ds051575.mlab.com:51575/niket';
-// const db = 'mongodb+srv://niket:Niket856@cluster0.wywgb.mongodb.net/<dbname>?retryWrites=true&w=majority'
 mongoose.Promise = global.Promise;
 mongoose.connect(db, (err) => {
   if (err) {
@@ -20,15 +23,27 @@ router.get('/products', (req, res) => {
       if (err) {
         console.log(err);
       } else {
-        console.log(products)
+        console.log("product" ,products)
         res.json(products)
       }
 
     })
 });
 
+router.get('/products/:id', (req, res) => {
+  console.log(req.params);
+  Product.findById(req.params.id)
+    .exec((err, product) => {
+      if (err) {
+        console.log("error", err);
+      } else {
+        res.json(product)
+      }
+
+    })
+});
+
 router.post('/product', (req, res) => {
-  console.log(req);
   let product = new Product();
   product.name = req.body.name;
   product.price = req.body.price;
@@ -50,4 +65,5 @@ Product.findByIdAndRemove(req.params.id, (err,deletedProduct)=>{
   }
 })
 });
+
 module.exports = router;
