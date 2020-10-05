@@ -1,4 +1,21 @@
-<div class="row">
-    <h1>Product Details:</h1>
-    <span>Name:{{productDetails.description}}</span>
+<div class="card" *ngIf="!loading">
+    <h3>Product Details</h3>
+    <div>
+        <img width="auto" *ngIf="productDetails.image" [src]="productDetails.image" class="image">  
+    </div>
+    <div>
+        <h6>Name</h6>
+        <p class="desc">{{productDetails.name}}</p>
+    </div>
+    <div>
+        <h6>Price</h6>
+        <p class="desc">{{productDetails.price}}</p>
+    </div>
+    <div>
+        <h6>Description</h6>
+        <p class="desc">{{productDetails.description}}</p>
+    </div>
 </div>
+<div *ngIf="loading">
+    <i class="fa fa-spinner" aria-hidden="true"></i>
+  </div>

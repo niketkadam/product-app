@@ -8,10 +8,13 @@
   <div *ngIf="products && !loading" class="row">
     <div class="card col-md-3" *ngFor="let product of products"  (click)="routeTo(product,false)">
       <i class="fa fa-remove " (click)="remove(product)"></i>
-      <img width="100%" *ngIf="product.image" [src]="product.image" class="image">
+      <div class="card-img">
+        <img width="100%" *ngIf="product.image" [src]="product.image" class="image">
+      </div>
+      
       <div class="container">
         <p>{{product.name}}</p>
-        <p>{{product.price}}</p>
+        <!-- <p>{{product.price}}</p> -->
       </div>
     </div>
   </div>

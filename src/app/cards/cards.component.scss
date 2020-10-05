@@ -1,21 +1,36 @@
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-  width: 40%;
-  padding:5px;
-  margin:15px;
+  padding: 5px;
+  margin: 15px;
+  display: block;
+  background: #fff;
+  border: 1px solid #e7e7e7;
+  border-radius: 4px;
+  box-shadow: 1px 2px 2px rgba(0,0,0,.06);
+  max-height: auto;
+  transition: all .1s ease-in;
+  word-break: break-word;
   cursor: pointer;
 }
 
 .card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 .container {
   padding: 2px 16px;
 }
 
-.fa-remove::before{
+.fa-spinner {
+  display: block !important;
+  font-size: 100px !important;
+}
+
+.fa-remove {
   float: right !important;
-  color:red;
+  color: red;
+}
+.image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
